@@ -1,0 +1,432 @@
+* { padding: 0; margin: 0; }
+button{
+  outline:none;
+}
+/*下面是省市区三级联动*/
+.Three-level-linkage{
+  margin: 10px;
+  display: block;
+  width: 200px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+/*下面是tree的css*/
+.t-tree-title{
+  margin-left: 10px;
+}
+.iconfont{
+  display: inline-block;
+  padding: 3px;
+}
+/*下面是分页的css*/
+.page{
+  color: #969696;
+  border: 1px solid #f0f0f0!important;
+  margin: 0 4px;
+  outline: none;
+  font-size: 14px;
+  padding: 4px 10px;
+  min-width: 30px;
+  height: 28px;
+  cursor: pointer;
+}
+.page:link{
+  outline: none;
+}
+.page:hover{
+  border: 1px solid #dedede!important;
+}
+.pageNumber{
+  color: #969696;
+  border: 1px solid #f0f0f0!important;
+  margin: 0 4px;
+  outline: none;
+  font-size: 14px;
+  padding: 4px 10px;
+  min-width: 30px;
+  height: 28px;
+  cursor: pointer;
+}
+.pageNumber:hover{
+  border: 1px solid #dedede!important;
+}
+.pageNumberBackground{
+  background-color: #dedede;
+  color: white;
+}
+/*下面是alert插件css*/
+.mydialog123 {z-index: 1000; background: #fff; box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.3); overflow: hidden; width: 300px; height: 180px; border: 1px solid #dcdcdc; position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; }
+.close123 { position: absolute; right: 5px; top: 5px; width: 16px; height: 16px; line-height: 16px; text-align: center; font-size: 18px; cursor: pointer; }
+.mydialog-cont { padding: 0 0 50px; display: table; width: 100%; height: 100%; }
+.mydialog-cont .cont123 { display: table-cell; text-align: center; vertical-align: middle; width: 100%; height: 100%; }
+.footer123 { display: table; table-layout: fixed; width: 100%; position: absolute; bottom: 0; left: 0; border-top: 1px solid #dcdcdc; }
+.footer123 .btn123 { display: table-cell; width: 50%; height: 50px; line-height: 50px; text-align: center; cursor: pointer; }
+.footer123 .btn123:last-child { display: table-cell; width: 50%; height: 50px; line-height: 50px; text-align: center; cursor: pointer; border-left: 1px solid #dcdcdc; }
+/*下面是轮播图插件css*/
+.t-Carousel-content{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.t-Carousel-img{
+  width: 100%;
+  height: 100%;
+}
+.t-Carousel-Choice{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  z-index: 10;
+}
+.t-Carousel-left{
+  cursor: pointer;
+  background-color: rgba(51,51,51,.5);
+  position: absolute;
+  overflow: hidden;
+  left: 20px;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  top:50%;
+  z-index: 10;
+}
+.t-Carousel-left:hover{
+  background-color: rgba(51,51,51,.8);
+}
+.t-Carousel-right{
+  cursor: pointer;
+  background-color: rgba(51,51,51,.5);
+  position: absolute;
+  overflow: hidden;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  top:50%;
+  z-index: 10;
+}
+.t-Carousel-right:hover{
+  background-color: rgba(51,51,51,.8);
+}
+.t-Carousel-Choice div{
+  display: inline-block;
+  margin: 0 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #5fb0f5;
+}
+.t-Carousel-Choice div:hover{
+  background-color: #5fb0f5;
+}
+.t-Carousel-background{
+  background-color: #5fb0f5;
+}
+/*下面是button的插件css*/
+.t-btn-sure{
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 10px;
+  background-color: black;
+  color: white;
+}
+.ct-btn{ //初始样式
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid #d9d9d9;
+  margin: 8px 0;
+  padding: 0 15px;
+  white-space: nowrap;
+  line-height: 1.15;
+  font-size: 12px;
+  border-radius: 4px;
+  height: 28px;
+  background-color: #fff;
+}
+.ct-btn:focus{ //初始样式
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.12);
+  //transform: translate3d(0, -2px, 0);
+}
+.btn-selected:hover{ //hover 效果
+  border-color: #5fb0f5;
+  color: #5fb0f5;
+  -webkit-transition: border-color,color .1s;
+  -moz-transition: border-color,color .1s;
+  -ms-transition: border-color,color .1s;
+  -o-transition: border-color,color .1s;
+  transition: border-color,color .1s ease;
+}
+.btn-xs{
+  height: 30px;
+  font-size: 14px;
+}
+.btn-dm{
+  height: 35px;
+  font-size: 16px;
+}
+.btn-selected:focus{
+  border-color: #5fb0f5;
+  white-space: nowrap;
+  outline: none;
+  color: #5fb0f5;
+}
+.btn-who{
+  color: #5fb0f5;
+  border-color: #5fb0f5;
+}
+.btn-who:hover{
+  color: #8dc6f5;
+  border-color: #8dc6f5;
+}
+.btn-who:focus{
+  color: #5fb0f5;
+  border-color: #5fb0f5;
+}
+.btn-who-back:hover{
+  color: white;
+  background-color: #5fb0f5;
+  border-color: #5fb0f5;
+}
+.btn-who-back:focus{
+  color: white;
+  background-color: #7dc1f5;
+  border-color: #7dc1f5;
+}
+.btn-whole{
+  background-color: #5fb0f5;
+  color: white;
+  border-color: #5fb0f5;
+}
+.btn-whole:hover{
+  background-color: #7dc1f5;
+  border-color: #7dc1f5;
+}
+.btn-whole:focus{
+  background-color: #7dc1f5;
+  border-color: #7dc1f5;
+}
+.btn-delete{
+  background-color: #ff9797;
+  color: white;
+  border-color: #ff9797;
+}
+.btn-delete:hover{
+  background-color: #ff7e85;
+  border-color: #ff7e85;
+}
+.btn-delete:focus{
+  background-color: #ff7e85;
+  border-color: #ff7e85;
+}
+.btn-war{
+  color: #d9534f;
+  border: 1px solid #d9534f;
+}
+.btn-war:hover{
+  color: #d9817f;
+  border: 1px solid #d9817f;
+}
+.btn-war:focus{
+  color: #d9817f;
+  border: 1px solid #d9817f;
+}
+.btn-war-back:hover{
+  background-color: #d9534f;
+  color: white;
+  border-color: #d9534f;
+}
+.btn-war-back:focus{
+  background-color: #d9534f;
+  color: white;
+  border-color: #d9534f;
+}
+.btn-warning{
+  background-color: #d9534f;
+  color: white;
+  border-color: #d9534f;
+}
+.btn-warning:hover{
+  background-color: #d91f25;
+  border-color: #d91f25;
+}
+.btn-warning:focus{
+  background-color: #d91f25;
+  border-color: #d91f25;
+}
+.btn-dang{
+  color: #f5d567;
+  border: 1px solid #f5d567;
+}
+.btn-dang:hover{
+  color: #f5df93;
+  border: 1px solid #f5df93;
+}
+.btn-dang:focus{
+  color: #f5df93;
+  border: 1px solid #f5df93;
+}
+.btn-dang-back:hover{
+  color: white;
+  background-color: #f5c059;
+  border-color: #f5c059;
+}
+.btn-dang-back:focus{
+  color: white;
+  background-color: #f5c059;
+  border-color: #f5c059;
+}
+.btn-danger{
+  background-color: #f5d567;
+  color: white;
+  border-color: #f5d567;
+}
+.btn-danger:hover{
+  background-color: #f5c059;
+  border-color: #f5c059;
+}
+.btn-danger:focus{
+  background-color: #f5c059;
+  border-color: #f5c059;
+}
+.btn-success{
+  background-color: #5cb85c;
+  color: white;
+  border-color: #5cb85c;
+}
+.btn-suc{
+  color: #5cb85c;
+  border: 1px solid #5cb85c;
+}
+.btn-suc:hover{
+  color: #94b893;
+  border: 1px solid #94b893;
+}
+.btn-suc:focus{
+  color: #94b893;
+  border: 1px solid #94b893;
+}
+.btn-suc-back:hover{
+  color: white;
+  background-color: #05b831;
+  border-color: #05b831;
+}
+.btn-suc-back:focus{
+  color: white;
+  background-color: #05b831;
+  border-color: #05b831;
+}
+.btn-success:hover{
+  background-color: #05b831;
+  border-color: #05b831;
+}
+.btn-success:focus{
+  background-color: #05b831;
+  border-color: #05b831;
+}
+.btn-dashed{
+  color: #ff7e85;
+  border-color: #ff7e85;
+}
+.btn-dashed:hover{
+  color: #ffa7ae;
+  border-color: #ffa7ae;
+}
+.btn-dashed:focus{
+  color: #ffa7ae;
+  border-color: #ffa7ae;
+}
+.btn-dashed-back:hover{
+  color: white;
+  background-color: #ff7e85;
+  border-color: #ff7e85;
+}
+.btn-dashed-back:focus{
+  color: white;
+  background-color: #ff7e85;
+  border-color: #ff7e85;
+}
+.btn-dotted{
+  border: 1px dashed #d9d9d9;
+}
+.btn-dotted:hover{
+  color: #5fb0f5;
+  border: 1px dashed #5fb0f5;
+}
+.btn-dotted:focus{
+  color: #5fb0f5;
+  border: 1px dashed #5fb0f5;
+}
+.btn-dotted-dashed{
+  border: 1px dashed #d9d9d9;
+}
+.btn-dotted-dashed:hover{
+  color: #ffa7ae;
+  border: 1px dashed #ffa7ae;
+}
+.btn-dotted-dashed:focus{
+  color: #ffa7ae;
+  border: 1px dashed #ffa7ae;
+}
+.btn-dotted-success{
+  border: 1px dashed #d9d9d9;
+}
+.btn-dotted-success:hover{
+  color: #5cb85c;
+  border: 1px dashed #5cb85c;
+}
+.btn-dotted-success:focus{
+  color: #5cb85c;
+  border: 1px dashed #5cb85c;
+}
+//---------------------------------------上面是按钮
+body{
+  width: 1200px;
+  margin: 0 auto;
+}
+pre {
+  padding-top: 15px;
+  width: 800px;
+  margin: 15px 0 0;
+  background: rgba(222,222,222,.5);
+}
+pre code{
+  font-size: 14px;
+  color: #94b893;
+}
+.t-button-right{
+  float: left;
+  width: 700px;
+}
+.t-button-body{
+  width: 100%;
+  overflow: hidden;
+}
+.t-button-content{
+  padding-top: 50px;
+  padding-left: 10px;
+  width: 330px;
+  float: left;
+}
+.t-Carousel-body{
+  padding-top: 0!important;
+  position: relative;
+  margin: 0 auto;
+  width: 300px;
+  padding-left: 10px;
+  height: 180px;
+  overflow: hidden;
+}

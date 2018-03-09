@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CT插件</title>
+    <!--样式css-->
+    <link rel="stylesheet" href="./css/index.css">
+    <!--字体css-->
+    <link rel="stylesheet" href="css/font/iconfont.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script src="miain.min.js"></script>-->
+    <script src="main.js"></script>
+    <style>
+        body{
+            margin-bottom: 100px;
+        }
+    </style>
+    <script src="province.js"></script>
+</head>
+<body>
+<div>
+    <h3 style="margin: 30px 0">类似时间转换(刚刚-时分-昨天-年月日)：</h3>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <div>当前时间 <span id="time"></span></div>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+             function timestampToTime(timestamp) {//时间戳转换获取时间
+                   var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                   var Y = date.getFullYear() + '-';
+                   var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+                   var D = date.getDate()<10 ?  '0'+(date.getDate())+' ' :+ date.getDate()+' ';
+                   var h = date.getHours()<10 ?  '0'+(date.getHours())+':' :+ date.getHours()+':';
+                   var m = date.getMinutes()<10 ?  '0'+(date.getMinutes())+':' :+ date.getMinutes()+':';
+                   var s = date.getSeconds();
+                   return Y+M+D+h+m+s;
+               }
+            timestampToTime()//定义获取当前时间的方法
+            timestampToTime(Date.parse(new Date())/1000)
+            var time = '2018-03-9 10:04:47'; //time是当前任务的时间
+            ChiTu.getTime(time) //一个小时以内(显示 刚刚)
+            ChiTu.getTime(time) //一个小时到一天以内是(显示 时分)
+            ChiTu.getTime(time) //超过一天到第二天之间(显示 昨天)
+            ChiTu.getTime(time) //超过昨天（显示 年月日
+        </code>
+    </pre>
+    </div>
+</div>
+<div>
+    <h3 style="margin: 30px 0">省市区三级联动：</h3>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <select id="province" class="Three-level-linkage">
+            <option value="请选择">请选择</option>
+        </select>
+        <select id="city" class="Three-level-linkage">
+            <option value="请选择">请选择</option>
+        </select>
+        <select id="county" class="Three-level-linkage">
+            <option value="请选择">请选择</option>
+        </select>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+             &lt;script src="province.js"&gt;&lt;/script&gt; //需要引入  也可写入json（需要对main.js进行修改引入）
+             &lt;select id="province" class="Three-level-linkage"&gt;
+                &lt;option value="请选择"&gt;请选择&lt;/option&gt;
+             &lt;/select&gt;
+             &lt;select id="city" class="Three-level-linkage"&gt;
+                &lt;option value="请选择"&gt;请选择&lt;/option&gt;
+             &lt;/select&gt;
+             &lt;select id="county" class="Three-level-linkage"&gt;
+                &lt;option value="请选择"&gt;请选择&lt;/option&gt;
+             &lt;/select&gt;
+            ChiTu.ThreeLevelLinkage({}); //初始方法使用
+            ChiTu.ThreeLevelLinkage({//回显方法使用(自动把需要的地址给放进去)
+                optionsId:1,
+                cityId:1,
+                countyId:1
+            });
+        </code>
+    </pre>
+    </div>
+</div>
+<div>
+    <h3 style="margin: 30px 0">tree使用及展示：</h3>
+    <a href="css/font/icondemo.html" target=_blank><div>icon图标链接</div></a>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <div id="tree"></div>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+              var ChituTree = [                //数组格式(必须这样) 后面会直接转换成各自的层级
+              {
+                  id: 1,
+                  name: "一级标题",
+                  pid: 0
+              }, {
+                  id: 2,
+                  name: "二级标题",
+                  pid: 0
+              }]
+              ChiTu.CtTree({
+                iconKai: 'icon-kaiwenjianjia',//可设置开启时样式默认'icon-kaiwenjianjia'
+                iconGuan: 'icon-wenjianjia',  //可设置关闭时样式默认'icon-wenjianjia'
+                dingDan: 'icon-dingdan',      //可设置文件样式默认'icon-dingdan'
+                guanBi: 'icon-guanbi1',       //关闭按钮样式'icon-guanbi1'
+                tree: '#tree',                //插入的dom节点必须
+                arr: ChituTree,               //插入的数组必须
+                ok: function (res) {          //点击标题回调函数
+                    console.log(res.id);
+                    console.log(res.name);
+                }
+              })
+        </code>
+    </pre>
+    </div>
+</div>
+<div>
+    <h3 style="margin: 30px 0">分页使用及展示：</h3>
+</div>
+<div class="t-button-body">
+    <div style="width: 100%!important;">
+        <div style="text-align: center;margin-top: 10px;margin-left: 50px" id="pagination"></div>
+    </div>
+    <div class="t-button-content">
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+              ChiTu.pagination({                        //分页
+                    id: '#pagination',                  //当前要插入的dom节点
+                    paging: 2,                          //总共条数
+                    currentPaging:1,                    //当前条数
+                    callback: function(num) {
+                        console.log(num)                //返回的页数
+                    }
+                })
+                /*
+                //方便用户更好的掌握用法
+                //参数为当前页
+                chitu(1);
+                function chitu(num) {
+                    $.ajax({
+                        url: "",
+                        type: "post",
+                        data: {},
+                        dataType: "json",
+                        success: function(data) {
+                            console.log(data);
+                            //分页
+                              ChiTu.pagination({                        //分页
+                                    id: '#pagination',
+                                    paging: 2,                          //总共条数
+                                    currentPaging:1,                    //当前条数
+                                    callback: function(num) {
+                                        console.log(num)                //返回的页数
+                                    }
+                                })
+                        }
+                    })
+                }
+                */
+        </code>
+    </pre>
+    </div>
+</div>
+<div>
+    <h3 style="margin: 30px 0">alert使用及展示：</h3>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content" style="padding: 17px 0 0 0;margin-right: 10px">
+        <div class="mydialog123" style="position: relative!important;">
+            <span class="close123">×</span>
+            <div class="mydialog-cont">
+                <div class="cont123">我是里面的内容</div>
+            </div>
+            <div class="footer123">
+                <span class="btn123 t_ok_alert">确定</span>
+                <span class="btn123 t_remove_alert">取消</span>
+            </div>
+        </div>
+    </div>
+    <div class="t-button-right" style="">
+        <pre>
+        <code>
+              ChiTu.EjectAlertL({
+                  ok: function () {
+                      alert('你点击了确定')
+                  },
+                  close: function () {
+                      alert('你点击了取消')
+                  }
+              })
+        </code>
+    </pre>
+    </div>
+</div>
+<div>
+    <h3 style="margin: 30px 0">轮播图使用及展示：</h3>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content" style="padding: 25px 0 0 0;margin-right: 10px">
+        <div id="t-Carousel-body" class="t-Carousel-body"></div>
+    </div>
+    <div class="t-button-right" style="">
+        <pre>
+        <code>
+            var ImgList = [//当前图片格式
+                'http://oxi8pj5na.bkt.clouddn.com/11.png',
+                'http://oxi8pj5na.bkt.clouddn.com/222.png',
+                'http://oxi8pj5na.bkt.clouddn.com/333.png'
+            ];
+             ChiTu.TCarousel({ //轮播图
+                id: '#t-Carousel-body', //必填是当前的插入的位置
+                ImgList: ImgList //必填是图片的数组
+             })
+        </code>
+    </pre>
+    </div>
+</div>
+<div>
+    <h3 style="margin: 30px 0">按钮使用及展示：</h3>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <button class="ct-btn btn-selected btn-dm" >我是大按钮</button>
+        <button class="ct-btn btn-selected btn-xs" >我是中按钮</button>
+        <button class="ct-btn btn-selected" >按钮</button>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+            &lt;button class='ct-btn btn-selected btn-dm'&gt;我是大按钮&lt;/button&gt;
+            &lt;button class='ct-btn btn-selected btn-xs'&gt;我是中按钮&lt;/button&gt;
+            &lt;button class='ct-btn btn-selected'&gt;按钮&lt;/button"&gt;
+        </code>
+    </pre>
+    </div>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <button class="ct-btn btn-dotted" >按钮蓝</button>
+        <button class="ct-btn btn-dotted-dashed" >按钮粉</button>
+        <button class="ct-btn btn-dotted" >按钮绿</button>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+            &lt;button class='ct-btn btn-dotted'&gt;按钮蓝&lt;/button&gt;
+            &lt;button class='ct-btn btn-dotted-dashed'&gt;按钮粉&lt;/button&gt;
+            &lt;button class='ct-btn btn-dotted'&gt;按钮绿&lt;/button"&gt;
+        </code>
+    </pre>
+    </div>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <button class="ct-btn btn-dashed" >按钮淡</button>
+        <button class="ct-btn btn-dashed btn-dashed-back" >按钮满</button>
+        <button class="ct-btn btn-delete" >按钮深</button>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+            &lt;button class='ct-btn btn-dashed'&gt;按钮淡&lt;/button&gt;
+            &lt;button class='ct-btn btn-dashed btn-dashed-back'&gt;按钮满&lt;/button&gt;
+            &lt;button class='ct-btn btn-delete'&gt;按钮深&lt;/button"&gt;
+        </code>
+    </pre>
+    </div>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <button class="ct-btn btn-who" >按钮淡</button>
+        <button class="ct-btn btn-who btn-who-back" >按钮满</button>
+        <button class="ct-btn btn-whole" >按钮深</button>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+            &lt;button class='ct-btn btn-who'&gt;按钮淡&lt;/button&gt;
+            &lt;button class='ct-btn btn-who btn-who-back'&gt;按钮满&lt;/button&gt;
+            &lt;button class='ct-btn btn-whole'&gt;按钮深&lt;/button"&gt;
+        </code>
+    </pre>
+    </div>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <button class="ct-btn btn-dang" >按钮淡</button>
+        <button class="ct-btn btn-dang btn-dang-back" >按钮满</button>
+        <button class="ct-btn btn-danger" >按钮深</button>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+            &lt;button class='ct-btn btn-dang'&gt;按钮淡&lt;/button&gt;
+            &lt;button class='ct-btn btn-dang btn-dang-back'&gt;按钮满&lt;/button&gt;
+            &lt;button class='ct-btn btn-danger'&gt;按钮深&lt;/button"&gt;
+        </code>
+    </pre>
+    </div>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <button class="ct-btn btn-suc" >按钮淡</button>
+        <button class="ct-btn btn-suc btn-suc-back" >按钮满</button>
+        <button class="ct-btn btn-success" >按钮深</button>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+            &lt;button class='ct-btn btn-suc'&gt;按钮淡&lt;/button&gt;
+            &lt;button class='ct-btn btn-suc btn-suc-back'&gt;按钮满&lt;/button&gt;
+            &lt;button class='ct-btn btn-success'&gt;按钮深&lt;/button"&gt;
+        </code>
+    </pre>
+    </div>
+</div>
+<div class="t-button-body">
+    <div class="t-button-content">
+        <button class="ct-btn btn-war" >按钮淡</button>
+        <button class="ct-btn btn-war btn-war-back" >按钮满</button>
+        <button class="ct-btn btn-warning" >按钮深</button>
+    </div>
+    <div class="t-button-right">
+        <pre>
+        <code>
+            &lt;button class='ct-btn btn-war'&gt;按钮淡&lt;/button&gt;
+            &lt;button class='ct-btn btn-war btn-war-back'&gt;按钮满&lt;/button&gt;
+            &lt;button class='ct-btn btn-warning'&gt;按钮深&lt;/button"&gt;
+        </code>
+    </pre>
+    </div>
+</div>
+
+
+<script>
+    ChiTu.ThreeLevelLinkage({optionsId:1,cityId:1,countyId:1});
+    var time = '2018-03-9 10:04:47';
+    $('#time').text(timestampToTime(Date.parse(new Date())/1000));//时间转换
+
+    console.log(ChiTu.getTime(time)); //当前时间转换
+    var ImgList = [
+        'http://oxi8pj5na.bkt.clouddn.com/11.png',
+        'http://oxi8pj5na.bkt.clouddn.com/222.png',
+        'http://oxi8pj5na.bkt.clouddn.com/333.png'
+    ];
+    <!--轮播图-->
+    ChiTu.TCarousel({//轮播图
+        id: '#t-Carousel-body',//必填是当前的插入的位置
+        ImgList: ImgList//必填是图片的数组
+    });
+    var ChituTree = [
+        {
+            id: 1,
+            name: "一级标题",
+            pid: 0
+        }, {
+            id: 2,
+            name: "二级标题",
+            pid: 0
+        }, {
+            id: 3,
+            name: "2.1级标题",
+            pid: 2
+        }, {
+            id: 4,
+            name: "2.2级标题",
+            pid: 2
+        }, {
+            id: 5,
+            name: "1.1级标题",
+            pid: 1
+        }, {
+            id: 6,
+            name: "1.2级标题",
+            pid: 1
+        }, {
+            id: 7,
+            name: "1.21级标题",
+            pid: 6
+        }, {
+            id: 8,
+            name: "三级标题",
+            pid: 0
+        }, {
+            id: 9,
+            name: "1.22级标题",
+            pid: 6
+        }, {
+            id: 10,
+            name: "1.221级标题",
+            pid: 9
+        }, {
+            id: 11,
+            name: "1.2211级标题",
+            pid: 10
+        }, {
+            id: 12,
+            name: "1.2212级标题",
+            pid: 10
+        }
+    ];
+    <!--tree-->
+    ChiTu.CtTree({ //tree
+        tree: '#tree',
+        arr: ChituTree,
+        ok: function (res) {    //点击标题
+            console.log(res.id);
+            console.log(res.name);
+        }
+    })
+    ChiTu.pagination({ //分页
+        id: '#pagination',
+        paging: 15,//总共条数
+        currentPaging:3,//当前条数
+        callback: function(num) {
+            console.log(num)
+        }
+    })
+
+
+</script>
+</body>
+</html>
